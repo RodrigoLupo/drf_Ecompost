@@ -38,8 +38,8 @@ class Transaccion(models.Model):
         ('V', 'Venta'),
         ('C', 'Canje'),
     ]
-    proveedor = models.ForeignKey(Proveedor, null=True, blank=True, on_delete=models.SET_NULL)
-    cliente = models.ForeignKey(Cliente, null=True, blank=True, on_delete=models.SET_NULL)
+    proveedor = models.ForeignKey(Proveedor, null=True, blank=True, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, null=True, blank=True, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.PositiveIntegerField()
     total = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)

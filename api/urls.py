@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import configuracion_detail,TransaccionesList,kilos_list_create,TransaccionDetail,KiloDetail,update_user,UserList,UserDetail,register, login, ProveedorList, ClienteList, ProductoList, canjear_puntos, consultar_puntos, register_proveedor, proveedor_profile, ProveedorDetail, ClienteDetail, ProductoDetail
+from .views import login_user,configuracion_detail,TransaccionesList,kilos_list_create,TransaccionDetail,KiloDetail,update_user,UserList,UserDetail,register, login, ProveedorList, ClienteList, ProductoList, canjear_puntos, consultar_puntos, register_proveedor, proveedor_profile, ProveedorDetail, ClienteDetail, ProductoDetail
 
 urlpatterns = [
     path('register/', register),
     path('login/', login),
+    path('loginuser/', login_user),
     path('proveedores/', ProveedorList.as_view(), name='proveedores-list'),
     path('usuarios/', UserList.as_view(), name='user-list'),
     path('usuarios/<int:pk>/', UserDetail.as_view(), name='user-detail'),
