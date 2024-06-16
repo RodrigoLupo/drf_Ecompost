@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import configuracion_detail,TransaccionesList,kilos_list_create,TransaccionDetail,kilo_detail,update_user,UserList,UserDetail,register, login, ProveedorList, ClienteList, ProductoList, canjear_puntos, consultar_puntos, register_proveedor, proveedor_profile, ProveedorDetail, ClienteDetail, ProductoDetail
+from .views import configuracion_detail,TransaccionesList,kilos_list_create,TransaccionDetail,KiloDetail,update_user,UserList,UserDetail,register, login, ProveedorList, ClienteList, ProductoList, canjear_puntos, consultar_puntos, register_proveedor, proveedor_profile, ProveedorDetail, ClienteDetail, ProductoDetail
 
 urlpatterns = [
     path('register/', register),
@@ -17,7 +17,7 @@ urlpatterns = [
     path('register_proveedor/', register_proveedor, name='register-prove'),
     path('profile_proveedor/', proveedor_profile, name='proveedor-profile'),
     path('kilos/', kilos_list_create, name='kilos-list'),
-    path('kilos/<int:pk>/', kilo_detail, name='kilo-detail'),
+    path('kilos/<int:pk>/', KiloDetail.as_view() , name='kilo-detail'),
     path('transacciones/', TransaccionesList.as_view(), name='transaccion-list'),
     path('transacciones/<int:pk>/', TransaccionDetail.as_view(), name='transaccion-detail'),
     path('update-user/<int:pk>/', update_user, name='update-user'),
