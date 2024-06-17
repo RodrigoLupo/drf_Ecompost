@@ -28,7 +28,7 @@ class Producto(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     puntos_requeridos = models.PositiveIntegerField(null=True, blank=True)
     tipo = models.CharField(max_length=1, choices=TIPO_PRODUCTO_CHOICES)
-    imagen = models.ImageField(upload_to='productos/', null=False, blank=True, default='productos/default.jpg')
+    imagen = models.ImageField(upload_to='productos/', null=True, blank=True, default='productos/default.jpg')
 
     def __str__(self):
         return self.nombre
