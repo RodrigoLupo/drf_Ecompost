@@ -61,3 +61,12 @@ class KiloProveedor(models.Model):
 
 class Configuracion(models.Model):
     conversion_rate = models.PositiveIntegerField(default=100)
+
+class SensorData(models.Model):
+    temperature = models.FloatField(default=0.0)
+    humidity = models.FloatField(default=0.0)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+class ServoMotorState(models.Model):
+    is_active = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)

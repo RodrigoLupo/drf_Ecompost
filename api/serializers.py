@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Proveedor, Cliente, Producto, Transaccion, KiloProveedor, Configuracion
+from .models import Proveedor, Cliente, Producto, Transaccion, KiloProveedor, Configuracion,SensorData,ServoMotorState
 from django.contrib.auth.models import User
 
 
@@ -36,3 +36,11 @@ class ConfiguracionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Configuracion
         fields = ['conversion_rate']
+class SensorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SensorData
+        fields = ['temperature','humidity']
+class ServoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServoMotorState
+        fields = ['is_active']

@@ -5,8 +5,8 @@ from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Proveedor, Cliente, Producto, Transaccion, KiloProveedor,Configuracion
-from .serializers import ConfiguracionSerializer,ProveedorSerializer, ClienteSerializer, ProductoSerializer, TransaccionSerializer, KiloProveedorSerializer, UserSerializer
+from .models import Proveedor, Cliente, Producto, Transaccion, KiloProveedor,Configuracion,ServoMotorState,SensorData
+from .serializers import ConfiguracionSerializer,ProveedorSerializer, ClienteSerializer, ProductoSerializer, TransaccionSerializer, KiloProveedorSerializer, UserSerializer, ServoSerializer,SensorSerializer
 
 @api_view(['POST'])
 def register(request):
@@ -248,6 +248,39 @@ def configuracion_detail(request):
 
     elif request.method == 'PUT':
         serializer = ConfiguracionSerializer(configuracion, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['GET', 'PUT'])
+def servo_motor_state_detail(request):
+    servo_motor_state = ServoMotorState.objects.first()
+    if not servo_motor_state:
+        servo_motor_state = ServoMotorState.objects.create()
+
+    if request.method == 'GET':
+        serializer = ServoSerializer(servo_motor_state)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ServoSerializer(servo_motor_state, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET', 'PUT'])
+def sensor_data_detail(request):
+    sensor_data = SensorData.objects.first()
+    if not sensor_data:
+        sensor_data = SensorData.objects.create()
+
+    if request.method == 'GET':
+        serializer = SensorSerializer(sensor_data)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = SensorSerializer(sensor_data, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
