@@ -23,6 +23,6 @@ urlpatterns = [
     path('transacciones/<int:pk>/', TransaccionDetail.as_view(), name='transaccion-detail'),
     path('update-user/<int:pk>/', update_user, name='update-user'),
     path('configuracion/', configuracion_detail, name='configuracion'),
-     path('sensor_data/', sensor_data_detail, name='sensor_data_detail'),
+    path('sensor_data/', sensor_data_detail, name='sensor_data_detail'),
     path('servo_motor_state/', servo_motor_state_detail, name='servo_motor_state_detail'),
 ]
